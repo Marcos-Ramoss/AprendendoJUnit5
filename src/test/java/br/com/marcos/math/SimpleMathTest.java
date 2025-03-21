@@ -49,7 +49,7 @@ public class SimpleMathTest {
         double expected = 8D;
 
         assertEquals(expected, actual );
-        System.out.println(expected);
+
     }
 
 }
