@@ -3,9 +3,9 @@
 
   ## Tecnologias
 
-- Junpiter Plataform
-- Junpiter API
-- Junpiter Engine 
+- Jupiter Plataform
+- Jupiter API
+- Jupiter Engine 
 - maven 3.13.0
 - java 21
 - spring Boot 3.4.2
