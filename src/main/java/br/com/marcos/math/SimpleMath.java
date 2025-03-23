@@ -1,5 +1,7 @@
 package br.com.marcos.math;
 
+import static java.lang.Math.sqrt;
+
 public class SimpleMath {
 
     public Double sum(Double firstNumber, Double secondNumber){
@@ -20,6 +22,10 @@ public class SimpleMath {
 
     public Double mean(Double firstNumber, Double secondNumber){
         return (firstNumber + secondNumber) / 2;
+    }
+
+    public Double raizQuadrada(Double valor){
+        return Math.sqrt(valor);
     }
 
 }
