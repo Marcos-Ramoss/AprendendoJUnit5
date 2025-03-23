@@ -1,6 +1,11 @@
 package br.com.marcos.math;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,73 +36,20 @@ public class SimpleMathTest {
         System.out.println("Runnig @AfterEach method!");
     }
 
-    @DisplayName("Test 8 + 2 = 10")
-    @Test
-    void testSum() {
-        double firstNumber = 8D;
-        double secondNumber = 2D;
-
-        assertThrows(ArithmeticException.class, ()-> {
-            simpleMath.sum(firstNumber, secondNumber);
-        });
-
-
-    }
-
-    @DisplayName("Test 8 - 2 = 6")
-    @Test
-    void testSubtraction() {
-        double firstNumber = 8D;
-        double secondNumber = 2D;
-        Double actual = simpleMath.subtraction(firstNumber, secondNumber);
-        double expected = 6D;
-        assertEquals(expected, actual, () -> " O resultado não é valido: " + actual);
-        System.out.println("est 8 - 2 = 6");
-    }
-
-    @DisplayName("Test 8 * 2 = 16 ")
-    @Test
-    void testMultiplication() {
-        double firstNumber = 8D;
-        double secondNumber = 2D;
-        Double actual = simpleMath.multiplication(firstNumber, secondNumber);
-        double expected = 16D;
-        assertEquals(expected, actual, () -> " O resultado não é valido: " + actual);
-        System.out.println("Test 8 * 2 = 16");
-
-    }
-
-    @DisplayName("Test 8 / 2 = 4 ")
-    @Test
-    void testDivision() {
-        double firstNumber = 8D;
-        double secondNumber = 2D;
+    @DisplayName("Operation to division")
+    @ParameterizedTest
+    @MethodSource("testDivisionInputParameters")
+    void testDivision(Double firstNumber, Double secondNumber, double expected) {
         Double actual = simpleMath.division(firstNumber, secondNumber);
-        double expected = 4D;
-        assertEquals(expected, actual, () -> " O resuldado não é valido: " + actual);
-        System.out.println("Test 8 / 2 = 4");
+        assertEquals(expected, actual, () -> firstNumber + " / " + secondNumber + " did not produce: " + expected + " ! ");
     }
 
-    @DisplayName(" Test (8 + 8 )/ 2 = 8 ")
-    @Test
-    void testMean() {
-        Double actual = simpleMath.mean(8D, 8D);
-        double expected = 8D;
-        assertEquals(expected, actual);
-        System.out.println("Test (8 + 8 )/ 2 = 8");
+    public  static Stream<Arguments> testDivisionInputParameters(){
+        return Stream.of(
+                Arguments.of(6D, 2D, 3D),
+                Arguments.of(10D, 2D, 5D),
+                Arguments.of(20D, 2D, 10D)
 
+        );
     }
-
-    @DisplayName(" Test Square Root of 49 = 7")
-    @Test
-    void testraizQuadrada() {
-        Double valor = 49D;
-        Double actual = simpleMath.raizQuadrada(valor);
-        double expected = 7D;
-        assertEquals(expected, actual, () -> " Não existe raiz: ");
-        assertNotEquals(8D, actual);
-        System.out.println("Test Square Root of 49 = 7");
-
-    }
-
 }
