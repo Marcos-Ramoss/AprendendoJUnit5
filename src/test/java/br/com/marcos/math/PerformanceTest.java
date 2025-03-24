@@ -1,12 +1,14 @@
 package br.com.marcos.math;
 
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+@Order(1)
 public class PerformanceTest {
 
 //obs: foi adcionado 10000000 para verificar a falha na perfomance
