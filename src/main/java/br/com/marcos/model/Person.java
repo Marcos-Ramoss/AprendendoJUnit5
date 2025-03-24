@@ -1,4 +1,4 @@
-package br.com.marcos.personService;
+package br.com.marcos.model;
 
 import java.io.Serializable;
 import java.util.Objects;
