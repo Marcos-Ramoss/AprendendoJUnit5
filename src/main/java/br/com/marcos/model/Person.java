@@ -11,10 +11,10 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
-    private String gender;
     private String email;
+    private String gender;
 
-    public Person(){};
+
     public Person(String firstName, String lastName, String address, String gender, String email) {
         this.firstName = firstName;
         this.lastName = lastName;

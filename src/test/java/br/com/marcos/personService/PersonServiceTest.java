@@ -16,9 +16,9 @@ public class PersonServiceTest {
         person = new Person(
                 "Marcos",
                 "Oliveira",
-                "mar.stark.99@gmail.com",
                 "Manaus - BR",
-                "Masculino"
+                "Masculino",
+                "mar.stark.99@gmail.com"
         );
     }
 
@@ -44,32 +44,57 @@ public class PersonServiceTest {
         Person actual = service.createPerson(person);
 
         assertNotNull(person.getId(), ()-> "ID not null! ");
+        System.out.println(person.getId());
 
         assertEquals(
                 person.getFirstName(),
                 actual.getFirstName(),
                 () -> "The FistName is Diferent ");
+        System.out.println(person.getFirstName());
+
 
         assertEquals(
                 person.getLastName(),
                 actual.getLastName(),
                 () -> "The getLastName is Diferent ");
+        System.out.println(person.getLastName());
+
 
         assertEquals(
                 person.getAddress(),
                 actual.getAddress(),
                 () -> "The getAddress is Diferent ");
+        System.out.println(person.getAddress());
+
 
         assertEquals(
                 person.getGender(),
                 actual.getGender(),
                 () -> "The getLastName is Diferent ");
+        System.out.println(person.getGender());
 
         assertEquals(
                 person.getEmail(),
                 actual.getEmail(),
                 () -> "The getLastName is Diferent ");
+        System.out.println(person.getEmail());
+
+
 
     }
+
+    @DisplayName(" When Create a Person with null e-Mail shold throw Exception ")
+    @Test
+    void testCreatePerson_WhithNullEmail_SholdThrowIllegalArgument(){
+
+        IPersonService service = new PersonService();
+        person.setEmail(null);
+
+        assertThrows(
+                IllegalAccessException.class,
+                () -> service.createPerson(person),
+                () -> "Empty e-Mail shold have cause an IllegalAccessException! ");
+    }
+
 
 }
